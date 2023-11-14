@@ -1,4 +1,4 @@
-import 'package:ecommerce/authentication/register%20screen.dart';
+import 'package:ecommerce/authentication/Register/register%20screen.dart';
 import 'package:ecommerce/myTheme.dart';
 import 'package:ecommerce/utils/text%20field%20item.dart';
 import 'package:flutter/material.dart';
