@@ -1,4 +1,3 @@
-import 'Error.dart';
 import 'User.dart';
 
 /// message : "success"
@@ -19,7 +18,6 @@ class RegisterResponse {
     user = json['user'] != null ? User.fromJson(json['user']) : null;
     token = json['token'];
     statusMsg = json['statusMsg'];
-    error = json['errors'] != null ? Error.fromJson(json['errors']) : null;
   }
 
   String? message;

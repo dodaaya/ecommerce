@@ -4,6 +4,7 @@ import 'package:ecommerce/ui/authentication/Register/register%20screen.dart';
 import 'package:ecommerce/ui/authentication/login/login%20screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 
 void main() {
   runApp(MyApp());

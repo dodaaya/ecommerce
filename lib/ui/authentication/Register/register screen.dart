@@ -31,7 +31,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
               posActionName: 'ok', title: 'error');
         } else if (state is RegisterSuccessState) {
           DialogueUtils.hideLoading(context);
-          DialogueUtils.showMsg(context, state.response.user?.name ?? "",
+          DialogueUtils.showMsg(context, state.response.userEntity?.name ?? "",
               posActionName: 'ok', title: 'Success');
         }
       },

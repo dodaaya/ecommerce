@@ -3,15 +3,15 @@
 /// param : "phone"
 /// location : "body"
 
-class Error {
-  Error({
+class ErrorDiana {
+  ErrorDiana({
     this.value,
     this.msg,
     this.param,
     this.location,
   });
 
-  Error.fromJson(dynamic json) {
+  ErrorDiana.fromJson(dynamic json) {
     value = json['value'];
     msg = json['msg'];
     param = json['param'];
