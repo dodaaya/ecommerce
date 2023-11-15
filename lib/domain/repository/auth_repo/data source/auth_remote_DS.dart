@@ -5,4 +5,7 @@ import 'package:ecommerce/domain/entities/auth%20result%20entity.dart';
 abstract class AuthRemoteDS {
   Future<Either<BaseError, AuthResultEntity>> register(String name,
       String email, String password, String rePassword, String phone);
+
+  Future<Either<BaseError, AuthResultEntity>> login(
+      String email, String password);
 }

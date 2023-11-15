@@ -1,3 +1,4 @@
+import 'package:ecommerce/domain/use%20case/login%20use%20case.dart';
 import 'package:ecommerce/myTheme.dart';
 import 'package:ecommerce/ui/authentication/Register/register%20screen.dart';
 import 'package:ecommerce/ui/authentication/login/cubit/login%20states.dart';
@@ -17,7 +18,7 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
 
-  LoginViewModel viewModel = LoginViewModel();
+  LoginViewModel viewModel = LoginViewModel(loginUseCase: injectLoginUseCase());
 
   @override
   Widget build(BuildContext context) {
@@ -29,9 +30,11 @@ class _LoginScreenState extends State<LoginScreen> {
         } else if (state is LoginErrorState) {
           DialogueUtils.hideLoading(context);
           DialogueUtils.showMsg(context, state.errorMessage!,
-              posActionName: 'ok', title: 'error');
+              posActionName: 'ok', title: 'Error');
         } else if (state is LoginSuccessState) {
           DialogueUtils.hideLoading(context);
+          DialogueUtils.showMsg(context, state.response.token!,
+              posActionName: 'ok', title: 'Success');
         }
       },
       child: Scaffold(
@@ -78,7 +81,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                     return 'please enter your email address';
                                   }
                                   bool emailValid = RegExp(
-                                          r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                                      r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
                                       .hasMatch(value);
                                   if (!emailValid) {
                                     return 'invalid email';
@@ -146,9 +149,9 @@ class _LoginScreenState extends State<LoginScreen> {
                               .textTheme
                               .titleMedium!
                               .copyWith(
-                                  color: MyTheme.primaryColor,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 22.sp),
+                              color: MyTheme.primaryColor,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 22.sp),
                         ),
                       ),
                     ),
@@ -156,7 +159,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         backgroundColor: Colors.white,
                         shape: RoundedRectangleBorder(
                             borderRadius:
-                                BorderRadius.all(Radius.circular(15.r)))),
+                            BorderRadius.all(Radius.circular(15.r)))),
                   ),
                 ),
                 Padding(

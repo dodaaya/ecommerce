@@ -1,9 +1,12 @@
 import 'dart:convert';
+
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:dartz/dartz.dart';
 import 'package:ecommerce/data/api/api%20consts.dart';
 import 'package:ecommerce/data/api/base%20error.dart';
+import 'package:ecommerce/data/model/request/LoginRequest.dart';
 import 'package:ecommerce/data/model/request/registerRequest.dart';
+import 'package:ecommerce/data/model/response/LoginResponse.dart';
 import 'package:ecommerce/data/model/response/RegisterResponse.dart';
 import 'package:http/http.dart' as http;
 
@@ -41,6 +44,29 @@ class ApiManager {
             errorMessage: registerResponse.error != null
                 ? registerResponse.error!.msg
                 : registerResponse.message));
+      }
+    } else {
+      return left(BaseError(errorMessage: 'Check internet Connection'));
+    }
+  }
+
+  Future<Either<BaseError, LoginResponse>> login(
+      String email, String password) async {
+    final connectivityResult = await (Connectivity().checkConnectivity());
+    if (connectivityResult == ConnectivityResult.mobile ||
+        connectivityResult == ConnectivityResult.wifi) {
+      // I am connected to a mobile network.
+      Uri url = Uri.https(ApiConsts.baseUrl, ApiConsts.loginApi);
+      var requestBody = LoginRequest(
+        email: email,
+        password: password,
+      );
+      var response = await http.post(url, body: requestBody.toJson());
+      var loginResponse = LoginResponse.fromJson(jsonDecode(response.body));
+      if (response.statusCode == 200 && response.statusCode < 300) {
+        return Right(loginResponse);
+      } else {
+        return left(BaseError(errorMessage: loginResponse.message));
       }
     } else {
       return left(BaseError(errorMessage: 'Check internet Connection'));

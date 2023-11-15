@@ -1,3 +1,5 @@
+import 'package:ecommerce/domain/entities/auth%20result%20entity.dart';
+
 abstract class LoginStates {}
 
 class LoginLoadingState extends LoginStates {
@@ -14,4 +16,8 @@ class LoginErrorState extends LoginStates {
   LoginErrorState({required this.errorMessage});
 }
 
-class LoginSuccessState extends LoginStates {}
+class LoginSuccessState extends LoginStates {
+  AuthResultEntity response;
+
+  LoginSuccessState({required this.response});
+}
