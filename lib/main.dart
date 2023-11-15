@@ -1,10 +1,9 @@
-import 'package:ecommerce/authentication/register%20screen.dart';
 import 'package:ecommerce/myTheme.dart';
 import 'package:ecommerce/splash%20screen.dart';
+import 'package:ecommerce/ui/authentication/Register/register%20screen.dart';
+import 'package:ecommerce/ui/authentication/login/login%20screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import 'authentication/login screen.dart';
 
 void main() {
   runApp(MyApp());
