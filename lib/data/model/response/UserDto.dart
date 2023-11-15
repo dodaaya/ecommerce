@@ -1,15 +1,17 @@
+import 'package:ecommerce/domain/entities/UserEntity.dart';
+
 /// name : "Ahmed Abd Al-Muti"
 /// email : "dtarek153@gmail.com"
 /// role : "user"
 
-class User {
-  User({
+class UserDto {
+  UserDto({
     this.name,
     this.email,
     this.role,
   });
 
-  User.fromJson(dynamic json) {
+  UserDto.fromJson(dynamic json) {
     name = json['name'];
     email = json['email'];
     role = json['role'];
@@ -25,5 +27,9 @@ class User {
     map['email'] = email;
     map['role'] = role;
     return map;
+  }
+
+  UserEntity toUserEntity() {
+    return UserEntity(email: email, name: name);
   }
 }
