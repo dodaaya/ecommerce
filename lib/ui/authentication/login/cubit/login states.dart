@@ -18,6 +18,5 @@ class LoginErrorState extends LoginStates {
 
 class LoginSuccessState extends LoginStates {
   AuthResultEntity response;
-
   LoginSuccessState({required this.response});
 }

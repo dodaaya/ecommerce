@@ -81,7 +81,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                     return 'please enter your email address';
                                   }
                                   bool emailValid = RegExp(
-                                      r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                                          r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
                                       .hasMatch(value);
                                   if (!emailValid) {
                                     return 'invalid email';
@@ -149,9 +149,9 @@ class _LoginScreenState extends State<LoginScreen> {
                               .textTheme
                               .titleMedium!
                               .copyWith(
-                              color: MyTheme.primaryColor,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 22.sp),
+                                  color: MyTheme.primaryColor,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 22.sp),
                         ),
                       ),
                     ),
@@ -159,7 +159,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         backgroundColor: Colors.white,
                         shape: RoundedRectangleBorder(
                             borderRadius:
-                            BorderRadius.all(Radius.circular(15.r)))),
+                                BorderRadius.all(Radius.circular(15.r)))),
                   ),
                 ),
                 Padding(

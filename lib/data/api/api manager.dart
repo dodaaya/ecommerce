@@ -37,7 +37,7 @@ class ApiManager {
       var response = await http.post(url, body: requestBody.toJson());
       var registerResponse =
           RegisterResponse.fromJson(jsonDecode(response.body));
-      if (response.statusCode == 200 && response.statusCode < 300) {
+      if (response.statusCode == 200 || response.statusCode < 300) {
         return Right(registerResponse);
       } else {
         return left(BaseError(
@@ -57,13 +57,10 @@ class ApiManager {
         connectivityResult == ConnectivityResult.wifi) {
       // I am connected to a mobile network.
       Uri url = Uri.https(ApiConsts.baseUrl, ApiConsts.loginApi);
-      var requestBody = LoginRequest(
-        email: email,
-        password: password,
-      );
+      var requestBody = LoginRequest(email: email, password: password);
       var response = await http.post(url, body: requestBody.toJson());
       var loginResponse = LoginResponse.fromJson(jsonDecode(response.body));
-      if (response.statusCode == 200 && response.statusCode < 300) {
+      if (response.statusCode == 200 || response.statusCode < 300) {
         return Right(loginResponse);
       } else {
         return left(BaseError(errorMessage: loginResponse.message));

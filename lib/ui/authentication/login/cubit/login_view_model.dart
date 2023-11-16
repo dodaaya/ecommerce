@@ -7,8 +7,8 @@ class LoginViewModel extends Cubit<LoginStates> {
   LoginUseCase loginUseCase;
 
   LoginViewModel({required this.loginUseCase}) : super(LoginInitialState());
-  var passwordController = TextEditingController();
   var emailController = TextEditingController();
+  var passwordController = TextEditingController();
   var formKey = GlobalKey<FormState>();
   bool isObsecure = true;
 
@@ -18,7 +18,7 @@ class LoginViewModel extends Cubit<LoginStates> {
       var either = await loginUseCase.invoke(
           emailController.text, passwordController.text);
       return either.fold((l) {
-        emit(LoginErrorState(errorMessage: l.errorMessage));
+        emit(LoginErrorState(errorMessage: l.errorMessage!));
       }, (response) {
         emit(LoginSuccessState(response: response));
       });
