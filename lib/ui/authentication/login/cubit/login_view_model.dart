@@ -7,8 +7,8 @@ class LoginViewModel extends Cubit<LoginStates> {
   LoginUseCase loginUseCase;
 
   LoginViewModel({required this.loginUseCase}) : super(LoginInitialState());
-  var emailController = TextEditingController();
-  var passwordController = TextEditingController();
+  var emailController = TextEditingController(text: "dtarek78@gmail.com");
+  var passwordController = TextEditingController(text: "1234567");
   var formKey = GlobalKey<FormState>();
   bool isObsecure = true;
 

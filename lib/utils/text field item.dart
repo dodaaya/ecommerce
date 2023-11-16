@@ -35,6 +35,7 @@ class TextFieldItem extends StatelessWidget {
         Padding(
           padding: EdgeInsets.only(top: 24.h, bottom: 20.h),
           child: TextFormField(
+            controller: controller,
             decoration: InputDecoration(
                 fillColor: Colors.white,
                 filled: true,
