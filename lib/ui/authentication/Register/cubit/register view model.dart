@@ -5,16 +5,16 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class RegisterViewModel extends Cubit<RegisterStates> {
   RegisterUseCase registerUseCase;
+  var nameController = TextEditingController(text: "diana");
+  var phoneController = TextEditingController(text: "01156393933");
+  var rePasswordController = TextEditingController(text: "1234567");
+  var passwordController = TextEditingController(text: "1234567");
+  var emailController = TextEditingController(text: "dtarek78@gmail.com");
+  var formKey = GlobalKey<FormState>();
+  bool isObsecure = true;
 
   RegisterViewModel({required this.registerUseCase})
       : super(RegisterInitialState());
-  var nameController = TextEditingController();
-  var phoneController = TextEditingController();
-  var rePasswordController = TextEditingController();
-  var passwordController = TextEditingController();
-  var emailController = TextEditingController();
-  var formKey = GlobalKey<FormState>();
-  bool isObsecure = true;
 
   void register() async {
     if (formKey.currentState!.validate()) {

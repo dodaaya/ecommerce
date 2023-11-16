@@ -19,7 +19,6 @@ class LoginUseCase {
     });
   }
 }
-
 LoginUseCase injectLoginUseCase() {
   return LoginUseCase(repositoryContract: injectAuthRepo());
 }
