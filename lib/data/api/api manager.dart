@@ -58,12 +58,12 @@ class ApiManager {
       // I am connected to a mobile network.
       Uri url = Uri.https(ApiConsts.baseUrl, ApiConsts.loginApi);
       var requestBody = LoginRequest(email: email, password: password);
-      var response = await http.post(url, body: requestBody.toJson());
-      var loginResponse = LoginResponse.fromJson(jsonDecode(response.body));
-      if (response.statusCode == 200 || response.statusCode < 300) {
-        return Right(loginResponse);
+      var responseString = await http.post(url, body: requestBody.toJson());
+      var response = LoginResponse.fromJson(jsonDecode(responseString.body));
+      if (response.statusMsg != null) {
+        return left(BaseError(errorMessage: response.message));
       } else {
-        return left(BaseError(errorMessage: loginResponse.message));
+        return Right(response);
       }
     } else {
       return left(BaseError(errorMessage: 'Check internet Connection'));
